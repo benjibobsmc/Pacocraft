@@ -1,0 +1,10 @@
+name: PacoCraft
+version: 1.0.0
+author: Pacothegint
+main: com.github.pacothegint.PacoChat
+commands:
+    test:
+        usage:/command
+        description:Does stuff :P
+
+
