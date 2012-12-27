@@ -14,7 +14,7 @@ public class PacoCraftPlayerListener implements Listener {
 	
 	@EventHandler
 	public void onplayerjoin(PlayerJoinEvent event){
-		event.getPlayer().sendMessage(ChatColor.DARK_BLUE+"MOTD:"ChatColor.DARK_RED + "Remeber to vote for us at ")
+		event.getPlayer().sendMessage(ChatColor.DARK_BLUE+"MOTD: "+ ChatColor.DARK_RED + " Remeber to vote for us at http://minestatus.net/43509-percyjacksonrp ");
 	}
 	
 }
