@@ -1,10 +1,8 @@
 name: PacoCraft
 version: 1.0.0
 author: Pacothegint
-main: com.github.pacothegint.PacoChat
-commands:
-    test:
-        usage:/command
-        description:Does stuff :P
-
-
+main: com.github.pacothegint.PacoCraft
+#commands:
+ #       ec:
+  #      usage: /ec
+   #     description: Spawns an EnderCrystal
