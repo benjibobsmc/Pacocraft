@@ -1,5 +1,6 @@
 package com.github.pacothegint;
 
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EnderCrystal;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -26,6 +27,18 @@ public class PacoCraftListener implements Listener {
 		else if(event.getEntity() instanceof Player){
 			if(event.getDamager() instanceof EnderCrystal){
 				event.setCancelled(true);
+			}
+		}
+		else if (event.getDamager() instanceof Arrow){
+			Arrow a = (Arrow) event.getDamager();
+			if(a.getShooter() instanceof Player) {
+				Player player = (Player) a.getShooter();
+				if(((Player) player).hasPermission(new PacoCraftPermissions().ec)){
+					event.setCancelled(false);
+				}
+				else {
+					event.setCancelled(true);
+				}
 			}
 		}
 	}
