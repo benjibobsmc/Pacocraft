@@ -2,7 +2,10 @@ name: PacoCraft
 version: 1.0.0
 author: Pacothegint
 main: com.github.pacothegint.PacoCraft
-#commands:
- #       ec:
-  #      usage: /ec
-   #     description: Spawns an EnderCrystal
+commands:
+   pc:
+     description: Spawn and Ender Crystal
+     permission: ec
+permissions:
+   pacocraft.ec:
+     description: The one and only permission node

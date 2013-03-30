@@ -6,6 +6,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityCombustByEntityEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
@@ -29,15 +30,17 @@ public class PacoCraftListener implements Listener {
 				event.setCancelled(true);
 			}
 		}
-		else if (event.getDamager() instanceof Arrow){
-			Arrow a = (Arrow) event.getDamager();
-			if(a.getShooter() instanceof Player) {
-				Player player = (Player) a.getShooter();
-				if(((Player) player).hasPermission(new PacoCraftPermissions().ec)){
-					event.setCancelled(false);
-				}
-				else {
-					event.setCancelled(true);
+		else if (event.getEntity() instanceof EnderCrystal){
+			if(event.getDamager() instanceof Arrow){
+				Arrow a = (Arrow) event.getDamager();
+				if(a.getShooter() instanceof Player) {
+					Player player = (Player) a.getShooter();
+					if(((Player) player).hasPermission(new PacoCraftPermissions().ec)){
+						event.setCancelled(false);
+					}
+					else {
+						event.setCancelled(true);
+					}
 				}
 			}
 		}
@@ -48,5 +51,6 @@ public class PacoCraftListener implements Listener {
 		if(entity instanceof EnderCrystal){
 			event.setCancelled(true);
 		}
+
 	}
 }

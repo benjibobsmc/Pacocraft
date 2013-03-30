@@ -8,6 +8,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.EnderCrystal;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -36,5 +37,21 @@ public class PacoCraft extends JavaPlugin {
 	public void onDisable(){
 		PluginDescriptionFile pdffile = this.getDescription();
 		this.logger.info(pdffile.getName() + " Has been Disabled!");
+	}
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
+		Player player = (Player) sender;
+		if(commandLabel.equalsIgnoreCase("pc")){
+			if(((Player) player).hasPermission(new PacoCraftPermissions().ec)){
+				Location location = player.getTargetBlock(null, 20).getLocation().add(.5, .75, .5);
+				player.getWorld().spawnEntity(location, EntityType.ENDER_CRYSTAL);
+				sender.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_GREEN + "PacoCraft" + ChatColor.BLACK + "]" + ChatColor.RED + "Ender Crystal Spawned.");
+			}
+			else{
+				sender.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_GREEN + "PacoCraft" + ChatColor.BLACK + "]" + ChatColor.RED + "You don't have permission to you this command." );
+
+			}
+		}
+		return true;
+		
 	}
 }
